@@ -442,5 +442,6 @@ async def add_asset(asset: Asset):
 # This is the key addition for Render deployment
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
-    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=False)
+    uvicorn.run("index:app", host="0.0.0.0", port=port, reload=False)
+
 
