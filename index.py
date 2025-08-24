@@ -18,6 +18,7 @@ from bson import ObjectId
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from typing import Dict
+import uvicorn
 
 load_dotenv()
 
@@ -437,3 +438,9 @@ async def add_asset(asset: Asset):
     result = collection.insert_one(asset.data)
 
     return {"message": "Asset added successfully", "inserted_id": str(result.inserted_id)}
+
+# This is the key addition for Render deployment
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=False)
+
