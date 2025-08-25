@@ -27,7 +27,7 @@ app = FastAPI()
 # CORS setup to allow frontend requests
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Update this for production
+    allow_origins=["http://localhost:3000", "https://asset-management-ebon.vercel.app/"],  # Update this for production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -443,5 +443,6 @@ async def add_asset(asset: Asset):
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
     uvicorn.run("index:app", host="0.0.0.0", port=port, reload=False)
+
 
 
